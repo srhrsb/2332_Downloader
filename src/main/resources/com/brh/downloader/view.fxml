@@ -20,7 +20,7 @@
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
          <Label prefHeight="26.0" prefWidth="60.0" text="Zielordner" />
-         <TextField prefHeight="26.0" prefWidth="277.0" />
+         <TextField fx:id="targetFolder" prefHeight="26.0" prefWidth="277.0" />
          <Button mnemonicParsing="false" onAction="#searchFolder" prefHeight="26.0" prefWidth="110.0" text="Suchen" />
       </children>
    </HBox>
