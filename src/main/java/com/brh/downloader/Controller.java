@@ -39,12 +39,21 @@ public class Controller{
 
     private final ObservableList<DownloadItem> downloadItems = FXCollections.observableArrayList();
 
+
+    /**
+     * Initialisierung bei Instanzierung dieses Objekts
+     * es wird der Bezug der Spalten des TableView zur Modellklasse
+     * DownloadItem hergestellt
+     */
     @FXML
     public void initialize() {
         columnUrls.setCellValueFactory(new PropertyValueFactory<DownloadItem,String>("Link"));
         columnBytes.setCellValueFactory(new PropertyValueFactory<DownloadItem,Integer>("DownloadedBytes"));
     }
 
+    /**
+     * Link wird hinzugefügt zur Liste DownloadItems und an TableView zur Darstellung übergeben
+     */
     @FXML
     public void addLink() {
 
@@ -57,21 +66,31 @@ public class Controller{
 
         tableView.setItems( downloadItems );
     }
+
+    /**
+     * Suche nach dem Zielordner für die Downloads
+     */
     @FXML
     protected void searchFolder() {
-
-        Stage stage  = (Stage) targetFolder.getScene().getWindow(); //Stage holen
-        DirectoryChooser directoryChooser = new DirectoryChooser(); //File Chooser Objekt erstellen
-        File selected = directoryChooser.showDialog( stage); //FileChooser öffnen
-        targetFolder.setText(selected.getAbsolutePath()); //gewählten Pfad an das Textfeld übergeben
+        Stage stage  = (Stage) targetFolder.getScene().getWindow();
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setInitialDirectory( new File(System.getProperty("user.home")) );
+        File selected = directoryChooser.showDialog( stage);
+        targetFolder.setText(selected.getAbsolutePath());
     }
 
+    /**
+     * Alle Downloads löschen
+     */
     @FXML
     protected void clearAllDownloads(){
         downloadItems.clear();
         tableView.setItems( downloadItems );
     }
 
+    /**
+     * Download der sich im Focus befindet
+     */
     @FXML
     protected void deleteDownload(){
         var focus = tableView.getFocusModel();
@@ -80,12 +99,16 @@ public class Controller{
         tableView.setItems( downloadItems );
     }
 
+    /**
+     * Starten der Downloads, welche in der Liste eingetragen sind
+     */
     @FXML
     protected void download(){
         String target = targetFolder.getText();
 
          if(!target.isEmpty())   {
              for( var item : downloadItems){
+                 //nebenläufiger Prozess der Objecte vom Typen "Runable" ausführt
                  new Thread( new Download( item.getLink(), target) ).start();
              }
          }

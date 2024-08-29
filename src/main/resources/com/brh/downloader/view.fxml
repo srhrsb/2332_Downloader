@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+Nutzeroberfläche als XML-Datei, hier wird die UI mit XML-Tags beschrieben
+ausserdem wird die Verbindung vom View zum Controller hergestellt
+-->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
