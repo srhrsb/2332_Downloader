@@ -3,12 +3,14 @@ package com.brh.downloader;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.function.Consumer;
 
 public class Download implements Runnable {
 
     private String link;
     private String target;
     private File outputFile;
+
 
     public Download(String link, String target) {
         this.link = link;
