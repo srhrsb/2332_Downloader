@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 Nutzeroberfläche als XML-Datei, hier wird die UI mit XML-Tags beschrieben
 ausserdem wird die Verbindung vom View zum Controller hergestellt
 -->
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -14,9 +16,9 @@ ausserdem wird die Verbindung vom View zum Controller hergestellt
     </padding>
    <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0">
       <children>
-         <Label prefHeight="17.0" prefWidth="110.0" text="Liste " />
-         <TextField fx:id="linkTextfield" prefHeight="25.0" prefWidth="497.0" />
-         <Button fx:id="columnLinks" mnemonicParsing="false" onAction="#addLink" prefHeight="25.0" prefWidth="130.0" text="Link hinzufügen" />
+         <Label prefHeight="25.0" prefWidth="264.0" text="Einzelner File oder Website (wird durchsucht)" />
+         <TextField fx:id="linkTextfield" prefHeight="25.0" prefWidth="271.0" />
+         <Button fx:id="columnLinks" mnemonicParsing="false" onAction="#addLink" prefHeight="25.0" prefWidth="130.0" text="Link(s) hinzufügen" />
       </children>
    </HBox>
    <TableView fx:id="tableView" prefHeight="352.0" prefWidth="434.0">

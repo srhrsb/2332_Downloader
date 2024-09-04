@@ -1,5 +1,4 @@
 package com.brh.downloader;
-
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -16,11 +15,18 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
+import java.nio.file.FileVisitOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Controller{
     @FXML
@@ -59,14 +65,24 @@ public class Controller{
     public void addLink() {
 
         String link = linkTextfield.getText();
-
         if(link.isEmpty()) return;
+
+        var all = new AllDirectories();
+        var list = all.getAll(link);
+
+        if(list!= null){
+            for( var l : list){
+                downloadItems.add(new DownloadItem(l, 0));
+            }
+        }
 
         downloadItems.add(new DownloadItem(link, 0));
         linkTextfield.setText("");
 
         tableView.setItems( downloadItems );
     }
+
+
 
     /**
      * Suche nach dem Zielordner für die Downloads
