@@ -16,8 +16,8 @@ ausserdem wird die Verbindung vom View zum Controller hergestellt
     </padding>
    <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0">
       <children>
-         <Label prefHeight="25.0" prefWidth="264.0" text="Einzelner File oder Website (wird durchsucht)" />
-         <TextField fx:id="linkTextfield" prefHeight="25.0" prefWidth="271.0" />
+         <Label prefHeight="25.0" prefWidth="211.0" text="Pfad oder Website (wird durchsucht)" />
+         <TextField fx:id="linkTextfield" prefHeight="25.0" prefWidth="333.0" />
          <Button fx:id="columnLinks" mnemonicParsing="false" onAction="#addLink" prefHeight="25.0" prefWidth="130.0" text="Link(s) hinzufügen" />
       </children>
    </HBox>
