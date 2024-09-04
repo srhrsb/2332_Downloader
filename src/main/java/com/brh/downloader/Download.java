@@ -10,11 +10,14 @@ public class Download implements Runnable {
     private String link;
     private String target;
     private File outputFile;
+    private int downloadIndex;
+    private Consumer<UpdateProgress> progressCallback;
 
-
-    public Download(String link, String target) {
+    public Download(String link, String target, int downloadIndex, Consumer<UpdateProgress> progressCallback) {
         this.link = link;
         this.target = target;
+        this.downloadIndex = downloadIndex;
+        this.progressCallback = progressCallback;
     }
 
     public void run(){
@@ -42,7 +45,11 @@ public class Download implements Runnable {
             while((readByte = buffInputStream.read(buffer, 0, 1024)) >= 0){
                 buffOutputStream.write(buffer, 0, readByte);
                 downloaded += readByte;
+
                 System.out.println("Runtergeladen: "+downloaded);
+
+                var progress = new UpdateProgress(downloadIndex, downloaded);
+                progressCallback.accept(progress);
             }
 
             buffOutputStream.close();

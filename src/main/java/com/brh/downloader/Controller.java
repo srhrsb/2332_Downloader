@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.function.Consumer;
 
 public class Controller{
     @FXML
@@ -108,10 +109,19 @@ public class Controller{
         String target = targetFolder.getText();
 
          if(!target.isEmpty())   {
+             int downloadIndex = 0;
              for( var item : downloadItems){
                  //nebenläufiger Prozess der Objecte vom Typen "Runable" ausführt
-                 new Thread( new Download( item.getLink(), target) ).start();
+                 new Thread( new Download( item.getLink(), target, downloadIndex, this::updateBytes ) ).start();
+                 downloadIndex++;
              }
          }
+    }
+
+    private void updateBytes( UpdateProgress updateProgress) {
+        var downloadItem = downloadItems.get(updateProgress.getUpdateIndex());
+        downloadItem.setDownloadedBytes( updateProgress.getBytes() );
+        tableView.setItems( downloadItems );
+        tableView.refresh();
     }
 }
