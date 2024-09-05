@@ -24,8 +24,8 @@ public class Directories {
                 String href = link.attr("href");
 
                 if (!href.equals("../")) {
-                    String absoluteLink = directoryUrl + href;
-                    fileLinks.add(absoluteLink);
+//                    String absoluteLink = directoryUrl + href;
+                    fileLinks.add(href);
                 }
             }
 
