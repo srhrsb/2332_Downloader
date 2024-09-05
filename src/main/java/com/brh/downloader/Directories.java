@@ -9,13 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllDirectories {
+public class Directories {
 
-    public AllDirectories() {
-
-    }
-
-    public List<String> getAll( String directoryUrl ){
+    public static List<String> getAllFiles( String directoryUrl ){
 
         try {
             Document doc = Jsoup.connect(directoryUrl).get();

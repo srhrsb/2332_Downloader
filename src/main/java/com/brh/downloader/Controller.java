@@ -67,11 +67,10 @@ public class Controller{
         String link = linkTextfield.getText();
         if(link.isEmpty()) return;
 
-        var all = new AllDirectories();
-        var list = all.getAll(link);
+        var urlList = Directories.getAllFiles(link);
 
-        if(list!= null){
-            for( var l : list){
+        if(urlList!= null){
+            for( var l : urlList){
                 downloadItems.add(new DownloadItem(l, 0));
             }
         }
@@ -81,8 +80,6 @@ public class Controller{
 
         tableView.setItems( downloadItems );
     }
-
-
 
     /**
      * Suche nach dem Zielordner für die Downloads
