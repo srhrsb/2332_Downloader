@@ -131,9 +131,9 @@ public class Controller{
          }
     }
 
-    private void updateBytes( UpdateProgress updateProgress) {
-        var downloadItem = downloadItems.get(updateProgress.getUpdateIndex());
-        downloadItem.setDownloadedBytes( updateProgress.getBytes() );
+    private void updateBytes( int index, int bytes) {
+        var downloadItem = downloadItems.get(index);
+        downloadItem.setDownloadedBytes( index );
         tableView.setItems( downloadItems );
         tableView.refresh();
     }
