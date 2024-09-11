@@ -12,9 +12,9 @@ public class Download implements Runnable {
     private String target;
     private File outputFile;
     private int downloadIndex;
-    private Action<int, int> progressCallback;
+    private Action<Integer, Integer> progressCallback;
 
-    public Download(String link, String target, int downloadIndex, Action<int, int> progressCallback) {
+    public Download(String link, String target, int downloadIndex, Action<Integer, Integer> progressCallback) {
         this.link = link;
         this.target = target;
         this.downloadIndex = downloadIndex;

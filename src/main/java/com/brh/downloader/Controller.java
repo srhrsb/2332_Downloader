@@ -133,7 +133,7 @@ public class Controller{
 
     private void updateBytes( int index, int bytes) {
         var downloadItem = downloadItems.get(index);
-        downloadItem.setDownloadedBytes( index );
+        downloadItem.setDownloadedBytes( bytes);
         tableView.setItems( downloadItems );
         tableView.refresh();
     }
