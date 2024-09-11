@@ -64,13 +64,5 @@ public class Download implements Runnable {
         finally{
 
         }
-
-
-
-
     }
-
-
-
-
 }
